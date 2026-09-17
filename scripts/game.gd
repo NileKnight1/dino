@@ -20,7 +20,7 @@ func _ready() -> void:
 	$player.game = self
 	spawn()
 	score_inc()
-	#difficulty()
+	difficulty()
 
 var def_speed
 var def_wait_time
@@ -45,7 +45,7 @@ func spawn_powers():
 	if stop_game: return
 	if stop_spawn:
 		await get_tree().create_timer(wait_time).timeout
-		spawn_obstacles()
+		spawn_powers()
 		return
 	if player_rushing: return
 	
@@ -95,7 +95,7 @@ func difficulty():
 		#
 		#dif
 	#
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(15).timeout
 	print("diff increased")
 	speed += 20
 	wait_time -= 0.2
@@ -156,10 +156,12 @@ func _on_rush_taken(body: Node2D) -> void:
 		
 		speed = 1000
 		wait_time= 0.5
+		$player.run = 1
 		$CanvasLayer/rush.text = "Rush: " + str(1) 
 		await get_tree().create_timer(5.0).timeout
 		stop_spawn = 1
 		await get_tree().create_timer(1.0).timeout
+		$player.run = 0
 		$CanvasLayer/rush.text = "Rush: " + str(0)
 		stop_spawn = 0
 		speed  = def_speed
