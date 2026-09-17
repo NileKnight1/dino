@@ -181,25 +181,18 @@ offset_right = 123.0
 offset_bottom = 44.0
 text = "Score: 0000"
 
-[node name="coins" type="Label" parent="CanvasLayer" unique_id=1500947208]
-offset_left = 35.0
-offset_top = 45.0
-offset_right = 123.0
-offset_bottom = 68.0
-text = "Coins: 0"
-
 [node name="shield" type="Label" parent="CanvasLayer" unique_id=1156096262]
 offset_left = 35.0
-offset_top = 96.0
+offset_top = 71.0
 offset_right = 123.0
-offset_bottom = 119.0
+offset_bottom = 94.0
 text = "Shield: 0"
 
 [node name="rush" type="Label" parent="CanvasLayer" unique_id=1428028336]
 offset_left = 35.0
-offset_top = 75.0
+offset_top = 50.0
 offset_right = 123.0
-offset_bottom = 98.0
+offset_bottom = 73.0
 text = "Rush: 0"
 
 [connection signal="body_entered" from="reference_nodes/obstacles/obj1/Area2D" to="." method="_on_obstacle_body_entered"]

@@ -9,7 +9,10 @@ size = Vector2(85, 236)
 size = Vector2(85, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(84, 241)
+size = Vector2(88, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(88, 114)
 
 [node name="player" type="CharacterBody2D" unique_id=1112676643]
 script = ExtResource("1_3vyb7")
@@ -35,10 +38,21 @@ offset_top = -124.0
 offset_right = 57.0
 offset_bottom = -9.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=951318020]
+[node name="coin_normal" type="Area2D" parent="." unique_id=951318020]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1894258444]
-position = Vector2(13, -128.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin_normal" unique_id=1894258444]
+position = Vector2(13, -131)
 shape = SubResource("RectangleShape2D_qhqgy")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_player_area_body_entered"]
+[node name="coin_duck" type="Area2D" parent="." unique_id=722573137]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin_duck" unique_id=1307382036]
+position = Vector2(13, -68)
+shape = SubResource("RectangleShape2D_dqkch")
+
+[connection signal="body_entered" from="coin_normal" to="." method="_on_player_area_body_entered"]
+[connection signal="body_entered" from="coin_duck" to="." method="_on_player_area_body_entered"]

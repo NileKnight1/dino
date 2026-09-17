@@ -8,6 +8,8 @@ var jumping = 0
 var ducking = 0
 var move = 1
 
+var game
+
 func _physics_process(delta: float) -> void:
 	if!move:return
 	
@@ -46,4 +48,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_player_area_body_entered(body: Node2D) -> void:
-	print(body)
+	#if body != $Area2D && body != $"." && body.name != "ground":
+	body.position.y -= 20
+	body.get_parent().queue_free()
+	game.coin_add()

@@ -1,6 +1,5 @@
 extends Node2D
 
-var score = 0
 
 func _ready() -> void:
 	#var obj = $reference_nodes/obstacles/obj1.duplicate()
@@ -18,13 +17,26 @@ func _ready() -> void:
 	#$reference_nodes/obstacles.get_children()
 	
 	$CanvasLayer/restart.visible = 0
+	$player.game = self
 	spawn()
 	score_inc()
 
-
 func spawn():
-	spawn_obstacles()
-	spawn_powers()
+	#spawn_obstacles()
+	#spawn_powers()
+	spawn_coins()
+
+
+
+func spawn_coins():
+	if stop_game: return
+	print("spawn coins")
+	var temp = randi_range($reference_nodes/coins.get_child_count()-1, 0)
+	var obj = $reference_nodes/coins.get_child(temp).duplicate()
+	$moving_nodes/coins.add_child(obj)
+	
+	await get_tree().create_timer(wait_time).timeout
+	spawn_coins()
 
 func spawn_powers():
 	#print("power spawned")
@@ -53,6 +65,9 @@ var wait_time = 2
 var speed = 240
 var stop_game = 0
 
+var score = 0
+var coins = 0
+
 func score_inc():
 	
 	await get_tree().create_timer(0.1).timeout
@@ -61,19 +76,25 @@ func score_inc():
 	score += 1
 	score_inc()
 
+func coin_add():
+	coins += 1
+
 func _process(delta: float) -> void:
 	#$moving_nodes.position.x -= 1
 	if stop_game: return
 	
 	$CanvasLayer/score.text = "Score: " + str(score)
-	print(score)
+	$CanvasLayer/coins.text = "Coins: " + str(coins/2)
+	
+	#print(score)
 	#score += delta
 	#print(score)
 	for i in $moving_nodes/obstacles.get_children():
 		i.position.x -= speed * delta
 	for i in $moving_nodes/powers.get_children():
 		i.position.x -= speed * delta
-	
+	for i in $moving_nodes/coins.get_children():
+		i.position.x -= speed * delta
 		#print($moving_nodes/obstacles.get_children())
 	
 
@@ -118,3 +139,7 @@ func _on_restart_pressed() -> void:
 
 #func _on_coin_collected(body: Node2D) -> void:
 	#$reference_nodes/coin.visible = 0
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print(body)
