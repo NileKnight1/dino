@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		jumping = 0
 	
 	if Input.is_action_pressed("duck") && is_on_floor():
-		print("duc")
+		#print("duc")
 		ducking = 1
 		$normal.visible = 0
 		$duck.visible = 1

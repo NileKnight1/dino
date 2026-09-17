@@ -16,6 +16,18 @@ size = Vector2(39, 38)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(39, 109)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqjtg"]
+bg_color = Color(0, 0.7277679, 0.0893875, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(39, 38)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0.7542904, 0.56912124, 0.100165285, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+bg_color = Color(0.96632284, 0.3575676, 0.49874908, 1)
+
 [node name="game" type="Node2D" unique_id=612715132]
 script = ExtResource("1_uwrxv")
 
@@ -79,10 +91,55 @@ offset_bottom = -103.0
 position = Vector2(20.5, 19)
 shape = SubResource("RectangleShape2D_yqjtg")
 
+[node name="powers" type="Node2D" parent="reference_nodes" unique_id=1564593890]
+
+[node name="shield" type="Panel" parent="reference_nodes/powers" unique_id=336226390]
+offset_left = 544.0
+offset_top = 4.0
+offset_right = 584.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqjtg")
+
+[node name="Area2D" type="Area2D" parent="reference_nodes/powers/shield" unique_id=1998201921]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reference_nodes/powers/shield/Area2D" unique_id=369389168]
+position = Vector2(20.5, 19)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="rush" type="Panel" parent="reference_nodes/powers" unique_id=666365388]
+offset_left = 544.0
+offset_top = 4.0
+offset_right = 584.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iywne")
+
+[node name="Area2D" type="Area2D" parent="reference_nodes/powers/rush" unique_id=539643367]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reference_nodes/powers/rush/Area2D" unique_id=588323868]
+position = Vector2(20.5, 19)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="obj3" type="Panel" parent="reference_nodes/powers" unique_id=164809572]
+offset_left = 544.0
+offset_top = 4.0
+offset_right = 584.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p57ef")
+
+[node name="Area2D" type="Area2D" parent="reference_nodes/powers/obj3" unique_id=2033373970]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reference_nodes/powers/obj3/Area2D" unique_id=1189833222]
+position = Vector2(20.5, 19)
+shape = SubResource("RectangleShape2D_lbhrr")
+
 [node name="moving_nodes" type="Node2D" parent="." unique_id=780180435]
 
 [node name="obstacles" type="Node2D" parent="moving_nodes" unique_id=544894838]
 
+[node name="powers" type="Node2D" parent="moving_nodes" unique_id=1205261928]
+
 [connection signal="body_entered" from="reference_nodes/obstacles/obj1/Area2D" to="." method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="reference_nodes/obstacles/obj2/Area2D" to="." method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="reference_nodes/obstacles/obj3/Area2D" to="." method="_on_obstacle_body_entered"]
+[connection signal="body_entered" from="reference_nodes/powers/shield/Area2D" to="." method="_on_sheild_taken"]
+[connection signal="body_entered" from="reference_nodes/powers/rush/Area2D" to="." method="_on_rush_taken"]
