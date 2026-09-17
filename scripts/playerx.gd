@@ -2,14 +2,19 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -500.0
+const JUMP_VELOCITY = -600.0
 
 var jumping = 0
 var ducking = 0
+var move = 1
 
 func _physics_process(delta: float) -> void:
+	if!move:return
+	
 	if not is_on_floor():
 		velocity += get_gravity()*1.5 * delta
+	
+	
 
 	if Input.is_action_just_pressed("jump") && jumping == 0:
 		velocity.y = JUMP_VELOCITY
@@ -38,3 +43,7 @@ func _physics_process(delta: float) -> void:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_player_area_body_entered(body: Node2D) -> void:
+	print(body)

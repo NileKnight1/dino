@@ -8,6 +8,9 @@ size = Vector2(85, 236)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(85, 112)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(84, 241)
+
 [node name="player" type="CharacterBody2D" unique_id=1112676643]
 script = ExtResource("1_3vyb7")
 
@@ -31,3 +34,11 @@ offset_left = -30.0
 offset_top = -124.0
 offset_right = 57.0
 offset_bottom = -9.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=951318020]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1894258444]
+position = Vector2(13, -128.5)
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_area_body_entered"]
