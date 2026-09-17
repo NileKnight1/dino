@@ -5,15 +5,29 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(85, 236)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
+size = Vector2(85, 112)
+
 [node name="player" type="CharacterBody2D" unique_id=1112676643]
 script = ExtResource("1_3vyb7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=601115538]
+[node name="col_normal" type="CollisionShape2D" parent="." unique_id=601115538]
 position = Vector2(13.5, -131)
 shape = SubResource("RectangleShape2D_g2els")
 
-[node name="Panel" type="Panel" parent="." unique_id=327308778]
+[node name="normal" type="Panel" parent="." unique_id=327308778]
 offset_left = -30.0
 offset_top = -251.0
+offset_right = 57.0
+offset_bottom = -9.0
+
+[node name="col_duck" type="CollisionShape2D" parent="." unique_id=1564776829]
+position = Vector2(13.5, -69)
+shape = SubResource("RectangleShape2D_3vyb7")
+
+[node name="duck" type="Panel" parent="." unique_id=2090822111]
+visible = false
+offset_left = -30.0
+offset_top = -124.0
 offset_right = 57.0
 offset_bottom = -9.0

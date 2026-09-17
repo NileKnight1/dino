@@ -13,6 +13,9 @@ b = Vector2(638, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(39, 38)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(39, 109)
+
 [node name="game" type="Node2D" unique_id=612715132]
 script = ExtResource("1_uwrxv")
 
@@ -52,8 +55,34 @@ offset_bottom = 44.0
 position = Vector2(20.5, 19)
 shape = SubResource("RectangleShape2D_yqjtg")
 
+[node name="obj2" type="Panel" parent="reference_nodes/obstacles" unique_id=73442577]
+offset_left = 544.0
+offset_top = -68.0
+offset_right = 584.0
+offset_bottom = 44.0
+
+[node name="Area2D" type="Area2D" parent="reference_nodes/obstacles/obj2" unique_id=439295488]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reference_nodes/obstacles/obj2/Area2D" unique_id=775546334]
+position = Vector2(20.5, 54.5)
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="obj3" type="Panel" parent="reference_nodes/obstacles" unique_id=41413057]
+offset_left = 544.0
+offset_top = -143.0
+offset_right = 584.0
+offset_bottom = -103.0
+
+[node name="Area2D" type="Area2D" parent="reference_nodes/obstacles/obj3" unique_id=2051561568]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reference_nodes/obstacles/obj3/Area2D" unique_id=1972379295]
+position = Vector2(20.5, 19)
+shape = SubResource("RectangleShape2D_yqjtg")
+
 [node name="moving_nodes" type="Node2D" parent="." unique_id=780180435]
 
 [node name="obstacles" type="Node2D" parent="moving_nodes" unique_id=544894838]
 
 [connection signal="body_entered" from="reference_nodes/obstacles/obj1/Area2D" to="." method="_on_obstacle_body_entered"]
+[connection signal="body_entered" from="reference_nodes/obstacles/obj2/Area2D" to="." method="_on_obstacle_body_entered"]
+[connection signal="body_entered" from="reference_nodes/obstacles/obj3/Area2D" to="." method="_on_obstacle_body_entered"]
