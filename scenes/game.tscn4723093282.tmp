@@ -25,6 +25,9 @@ size = Vector2(39, 38)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 bg_color = Color(0.7542904, 0.56912124, 0.100165285, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+bg_color = Color(0.96632284, 0.3575676, 0.49874908, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbhrr"]
 bg_color = Color(0.8746479, 0.68694633, 0, 1)
 corner_radius_top_left = 50
@@ -123,6 +126,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iywne")
 [node name="Area2D" type="Area2D" parent="reference_nodes/powers/rush" unique_id=539643367]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="reference_nodes/powers/rush/Area2D" unique_id=588323868]
+position = Vector2(20.5, 19)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="obj3" type="Panel" parent="reference_nodes/powers" unique_id=164809572]
+offset_left = 544.0
+offset_top = 4.0
+offset_right = 584.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p57ef")
+
+[node name="Area2D" type="Area2D" parent="reference_nodes/powers/obj3" unique_id=2033373970]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reference_nodes/powers/obj3/Area2D" unique_id=1189833222]
 position = Vector2(20.5, 19)
 shape = SubResource("RectangleShape2D_lbhrr")
 
