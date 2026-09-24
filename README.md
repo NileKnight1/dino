@@ -1,4 +1,4 @@
-# Jumper Kiddon
+# Jumper Kiddo
 A game made with Godot
 
 ### Gameplay
